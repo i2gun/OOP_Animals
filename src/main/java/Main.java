@@ -46,10 +46,13 @@ public class Main {
         animals.add(new Dolphin("Phin"));
         animals.add(new Swan("Swan"));
 
+        int speed;
         for (Animal animal : animals){
             System.out.println();
             System.out.println(animal.getNickName() + ":");
-            animal.fly();
+            if ((speed = animal.fly()) > 0) System.out.println(" Скорость: " + speed);
+            if ((speed = animal.toGo()) > 0) System.out.println(" Скорость: " + speed);
+            if ((speed = animal.swim()) > 0) System.out.println(" Скорость: " + speed);
             animal.toGo();
             animal.swim();
         }
