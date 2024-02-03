@@ -1,5 +1,3 @@
-package clinic;
-
 import clinic.client.Owner;
 import clinic.staff.Doctor;
 import clinic.staff.Nurse;

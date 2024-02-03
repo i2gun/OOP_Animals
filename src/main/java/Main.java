@@ -1,4 +1,3 @@
-import clinic.VeterinaryClinic;
 import clinic.client.Owner;
 import clinic.client.patient.*;
 import clinic.staff.Doctor;
