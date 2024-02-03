@@ -1,4 +1,6 @@
-package clients;
+package clinic.client.patient;
+
+import clinic.client.patalogy.Illness;
 
 import java.time.LocalDate;
 
@@ -6,14 +8,12 @@ public class Animal {
 
     // protected видно в классе и во всех наследниках
     protected String nickName;
-    protected Owner owner;
     protected LocalDate birthDate;
     protected Illness illness;
 
     // Это пустой конструктор (по умолчанию)
-    public Animal(String nickName, Owner owner, LocalDate birthDate, Illness illness) {
+    public Animal(String nickName, LocalDate birthDate, Illness illness) {
         this.nickName = nickName;
-        this.owner = owner;
         this.birthDate = birthDate;
         this.illness = illness;
     }
@@ -24,15 +24,11 @@ public class Animal {
     }
 
     public Animal() {
-        this("Кличка", new Owner("Хозяин"), LocalDate.now(), new Illness("Болеет"));
+        this("Кличка", LocalDate.now(), new Illness("Болеет"));
     }
 
     public String getNickName() {
         return nickName;
-    }
-
-    public Owner getOwner() {
-        return owner;
     }
 
     public LocalDate getBirthDate() {
@@ -48,7 +44,7 @@ public class Animal {
     }
 
     public void lifeCycle() {
-        wakeUp("12:00");
+        wakeUp("11:00");
         hunt();
         eat();
         sleep();
@@ -80,18 +76,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return String.format("nickName = %s, bd = %s, owner = %s, illness = %s", nickName, birthDate, owner, illness);
-    }
-
-    public int fly() {
-        return 0;
-    }
-
-    public int toGo() {
-        return 0;
-    }
-
-    public int swim() {
-        return 0;
+        return String.format("nickName = %s, bd = %s, illness = %s", nickName, birthDate, illness);
     }
 }

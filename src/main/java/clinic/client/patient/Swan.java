@@ -1,25 +1,26 @@
-package clients;
+package clinic.client.patient;
 
-public class Swan extends Animal {
+import clinic.client.patient.behaviour.Flyable;
+import clinic.client.patient.behaviour.Swimable;
+import clinic.client.patient.behaviour.Walkable;
+
+public class Swan extends Animal implements Flyable, Walkable, Swimable {
 
     public Swan(String name) {
         super(name);
     }
 
-    @Override
-    public int fly() {
+    public double fly() {
         System.out.println("Животное быстро летает!");
         return 100;
     }
 
-    @Override
-    public int toGo() {
+    public double toGo() {
         System.out.println("Животное медленно ходит!");
         return 5;
     }
 
-    @Override
-    public int swim() {
+    public double swim() {
         System.out.println("Животное медленно плавает!");
         return 10;
     }

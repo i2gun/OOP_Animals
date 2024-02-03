@@ -1,62 +1,69 @@
-import clients.*;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import clinic.VeterinaryClinic;
+import clinic.client.Owner;
+import clinic.client.patient.*;
+import clinic.staff.Doctor;
+import clinic.staff.Nurse;
+import clinic.client.patient.behaviour.Flyable;
+import clinic.client.patient.behaviour.Swimable;
+import clinic.client.patient.behaviour.Walkable;
 
 public class Main {
     public static void main(String[] args) {
+        Owner owner1 = new Owner("Ivan");
+        owner1.addAnimal(new Dog("Sharik"));
+        owner1.addAnimal(new Bat("Batty"));
+        owner1.addAnimal(new Dolphin("Phin"));
+        owner1.addAnimal(new Raccoon("Coon"));
 
-        Animal someAnimal = new Animal(); //Создаём экземпляр класса
+        Owner owner2 = new Owner("Petya");
+        owner2.addAnimal(new Cat("Markis"));
+        owner2.addAnimal(new Swan("Swan"));
 
-//        System.out.println(cat.getOwner());
-//        System.out.println(cat.getNickName());
-//        System.out.println("Болезнь:" + cat.getIllness());
-//
-//        System.out.println(cat.getNickName());
-//
-//        cat.setIllness(new Illness(null));
-//
-//        System.out.println("Болезнь:" + cat.getIllness());
-//
-//
-//        Animal testAnimal = new Animal();
-//        System.out.println(testAnimal.getNickName());
-//
-//        cat.lifeCycle();
+        Doctor doctor1 = new Doctor("Gregory House", "surgeon");
 
-        Animal catty = new Cat("Солнышко", new Owner("Сергей Валерьевич"),
-                LocalDate.of(2021, 10, 5), new Illness("Лишай"), 0.0);
-        Dog goodBoy = new Dog();
+        Nurse nurse1 = new Nurse("Valentina Petrovna", "common practice");
+        Nurse nurse2 = new Nurse("Marina Ivanovna", "obstetrician");
 
-//        System.out.println(goodBoy.getType());
-//        System.out.println(catty.getType());
-//
-//        System.out.println(catty);
-//
-//        Cat.meow();
+        nurse1.assigne(doctor1);
+        nurse2.assigne(doctor1);
 
-        List<Animal> animals = new ArrayList<Animal>();
+        VeterinaryClinic clinic = new VeterinaryClinic(45);
+        clinic.addOwner(owner1);
+        clinic.addOwner(owner2);
 
-        animals.add(catty);
-        animals.add(goodBoy);
-        animals.add(someAnimal);
-        animals.add(new Bat("Batty"));
-        animals.add(new Raccoon("Coon"));
-        animals.add(new Dolphin("Phin"));
-        animals.add(new Swan("Swan"));
+        clinic.addNurse(nurse1);
+        clinic.addNurse(nurse2);
 
-        int speed;
-        for (Animal animal : animals){
-            System.out.println();
-            System.out.println(animal.getNickName() + ":");
-            if ((speed = animal.fly()) > 0) System.out.println(" Скорость: " + speed);
-            if ((speed = animal.toGo()) > 0) System.out.println(" Скорость: " + speed);
-            if ((speed = animal.swim()) > 0) System.out.println(" Скорость: " + speed);
-            animal.toGo();
-            animal.swim();
+        clinic.addDoctor(doctor1);
+
+
+        double speed;
+        for (Owner owner: clinic.getOwners()) {
+            System.out.println("------------------------------------------");
+            System.out.println("Владелец : " + owner.getFullName());
+            for (Animal animal : owner.getPets()) {
+                System.out.println();
+                System.out.println(animal.getNickName() + ":");
+                if ((animal instanceof Flyable) && ((speed = ((Flyable) animal).fly()) > 0))
+                    System.out.println(" Скорость: " + speed);
+                if ((animal instanceof Walkable) && ((speed = ((Walkable) animal).toGo()) > 0))
+                    System.out.println(" Скорость: " + speed);
+                if ((animal instanceof Swimable) && ((speed = ((Swimable) animal).swim()) > 0))
+                    System.out.println(" Скорость: " + speed);
+            }
         }
+        System.out.println();
+        System.out.println("===================================================");
+        System.out.println();
 
+        for(Doctor doctor : clinic.getDoctors()) {
+            for(Animal pet : owner1.getPets()) {
+                doctor.makeOperation(pet);
+                for(Nurse nurse : clinic.getNurses()) {
+                    nurse.makeAssistance(doctor);
+                }
+            }
+        }
     }
 }
 

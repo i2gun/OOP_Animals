@@ -1,4 +1,4 @@
-package clients;
+package clinic.client.patalogy;
 
 public class Illness {
     String title;
