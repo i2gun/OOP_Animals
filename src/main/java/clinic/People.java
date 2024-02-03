@@ -1,4 +1,4 @@
-package clinic.staff;
+package clinic;
 
 public class People {
     private final String fullName;

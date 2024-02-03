@@ -1,5 +1,7 @@
 package clinic.staff;
 
+import clinic.People;
+
 public class Personnel extends People {
 
     private final String specialization;

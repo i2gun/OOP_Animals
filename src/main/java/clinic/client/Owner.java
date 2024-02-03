@@ -1,7 +1,7 @@
 package clinic.client;
 
 import clinic.client.patient.Animal;
-import clinic.staff.People;
+import clinic.People;
 import java.util.ArrayList;
 import java.util.List;
 
