@@ -1,11 +1,11 @@
 package clinic.drugstore;
 
-public abstract class Component implements Comparable<Component> {
+public abstract class Medicine implements Comparable<Medicine> {
     private String title;
     private Double weight;
     private int power;
 
-    public Component(String title, Double weight, int power) { //ALT + Insert
+    public Medicine(String title, Double weight, int power) { //ALT + Insert
         this.title = title;
         this.weight = weight;
         this.power = power;
@@ -17,7 +17,7 @@ public abstract class Component implements Comparable<Component> {
     }
 
     @Override
-    public int compareTo(Component o) {
+    public int compareTo(Medicine o) {
 //  return this.power - o.power;
         return Integer.compare(this.power, o.power);
 

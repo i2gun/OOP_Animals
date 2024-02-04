@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Pharmacy implements Iterator<Component> {
-    private List<Component> components = new ArrayList<>();
+public class Pharmacy implements Iterator<Medicine> {
+    private List<Medicine> components = new ArrayList<>();
     private int index = 0;
 
-    public void addComponents(Component ... components) {
-        for(Component c : components){
+    public void addComponents(Medicine... components) {
+        for(Medicine c : components){
             this.components.add(c);
         }
     }
@@ -20,7 +20,7 @@ public class Pharmacy implements Iterator<Component> {
     }
 
     @Override
-    public Component next() {
+    public Medicine next() {
         return components.get(index++);
     }
 }

@@ -1,12 +1,13 @@
 package clinic.client.patient;
 
+import clinic.client.Owner;
 import clinic.client.patient.behaviour.Swimable;
 import clinic.client.patient.behaviour.Walkable;
 
 public class Raccoon extends Animal implements Walkable, Swimable {
 
-    public Raccoon(String name) {
-        super(name);
+    public Raccoon(String name, Owner owner) {
+        super(name, owner);
     }
 
     public double toGo() {

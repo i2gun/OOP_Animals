@@ -1,5 +1,6 @@
 package clinic.client.patient;
 
+import clinic.client.Owner;
 import clinic.client.patalogy.Illness;
 import clinic.client.patient.behaviour.Swimable;
 import clinic.client.patient.behaviour.Walkable;
@@ -10,18 +11,13 @@ public class Cat extends Animal implements Walkable, Swimable {
 
     Double discount;
 
-    public Cat(String nickName, LocalDate birthDate, Illness illness, Double discount) {
-        super(nickName, birthDate, illness); //Todo сначала конструктор Супер-класса
+    public Cat(String nickName, Owner owner, LocalDate birthDate, Illness illness, Double discount) {
+        super(nickName, owner, birthDate, illness);
         this.discount = discount;
     }
 
-    public Cat(String nickName) {
-        super(nickName, LocalDate.parse("2021-01-01"), new Illness("healthy"));
-    }
-
-    public Cat() {
-        super();
-        this.discount = 10D;
+    public Cat(String nickName, Owner owner) {
+        this(nickName, owner, LocalDate.parse("2021-01-01"), new Illness("healthy"), 100.0);
     }
 
     public Double getDiscount() {

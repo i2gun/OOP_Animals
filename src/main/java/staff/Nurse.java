@@ -1,9 +1,10 @@
 package clinic.staff;
 
+import clinic.staff.operations.Assistance;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Nurse extends Personnel {
+public class Nurse extends Personnel implements Assistance {
 
     private final List<Doctor> assistantOf;
 
@@ -12,7 +13,7 @@ public class Nurse extends Personnel {
         this.assistantOf = new ArrayList<>();
     }
 
-    public void assigne(Doctor doc) {
+    public void assign(Doctor doc) {
         assistantOf.add(doc);
     }
 
@@ -20,8 +21,11 @@ public class Nurse extends Personnel {
         assistantOf.remove(doc);
     }
 
-    public void makeAssistance(Doctor doc) {
-        if (assistantOf.contains(doc)) System.out.println(this + " assisting to " + doc.toString());
+    @Override
+    public void makeAssistance() {
+        for (Doctor doc : assistantOf) {
+            System.out.println(this + " assisting to " + doc.toString());
+        }
     }
 
     @Override
