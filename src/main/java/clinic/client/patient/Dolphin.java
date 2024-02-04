@@ -1,11 +1,12 @@
 package clinic.client.patient;
 
+import clinic.client.Owner;
 import clinic.client.patient.behaviour.Swimable;
 
 public class Dolphin extends Animal implements Swimable {
 
-    public Dolphin(String name) {
-        super(name);
+    public Dolphin(String name, Owner owner) {
+        super(name, owner);
     }
 
     public double swim() {

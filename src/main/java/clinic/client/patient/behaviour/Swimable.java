@@ -1,6 +1,6 @@
 package clinic.client.patient.behaviour;
 
-public interface Swimable {
+public interface Swimable extends Behavior {
 
     public double swim();
 }

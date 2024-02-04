@@ -1,13 +1,14 @@
 package clinic.client.patient;
 
+import clinic.client.Owner;
 import clinic.client.patient.behaviour.Flyable;
 import clinic.client.patient.behaviour.Swimable;
 import clinic.client.patient.behaviour.Walkable;
 
 public class Swan extends Animal implements Flyable, Walkable, Swimable {
 
-    public Swan(String name) {
-        super(name);
+    public Swan(String name, Owner owner) {
+        super(name, owner);
     }
 
     public double fly() {
