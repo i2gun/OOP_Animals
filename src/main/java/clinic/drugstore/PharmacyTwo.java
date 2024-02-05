@@ -1,19 +1,24 @@
 package clinic.drugstore;
 
 import clinic.drugstore.medicine.Medicine;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class PharmacyTwo implements Iterable<Medicine> {
-    private List<Medicine> components = new ArrayList<>();
-    private int index = 0;
+    private List<Medicine> medication;
+    private int index;
 
-    public void addComponents(Medicine... components) {
-        for(Medicine c : components){
-            this.components.add(c);
+    public PharmacyTwo(Medicine... drugs) {
+        index = 0;
+        medication = new ArrayList<>();
+        for(Medicine drug : drugs){
+            addMedicine(drug);
         }
+    }
+
+    public void addMedicine(Medicine drug) {
+        this.medication.add(drug);
     }
 
     @Override
@@ -22,12 +27,12 @@ public class PharmacyTwo implements Iterable<Medicine> {
 
             @Override
             public boolean hasNext() {
-                return index < components.size();
+                return index < medication.size();
             }
 
             @Override
             public Medicine next() {
-                return components.get(index++);
+                return medication.get(index++);
             }
         };
     }
