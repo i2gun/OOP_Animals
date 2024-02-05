@@ -51,7 +51,7 @@ public class VeterinaryClinic {
         return getAnimalsByAbility((x) -> x instanceof Flyable);
     }
 
-    private  <Behavior> List<Behavior> getAnimalsByAbility(Predicate check) {
+    private List<Behavior> getAnimalsByAbility(Predicate check) {
         List<Behavior> animalList = new ArrayList<>();
         for (Owner owner : owners) {
             for (Animal pet : owner.getPets()) {
