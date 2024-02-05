@@ -6,10 +6,7 @@ import clinic.client.patient.behaviour.Behavior;
 import clinic.client.patient.behaviour.Flyable;
 import clinic.client.patient.behaviour.Swimable;
 import clinic.client.patient.behaviour.Walkable;
-import clinic.staff.Doctor;
-import clinic.staff.Nurse;
 import clinic.staff.Personnel;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -54,12 +51,12 @@ public class VeterinaryClinic {
         return getAnimalsByAbility((x) -> x instanceof Flyable);
     }
 
-    private  <E> List<E> getAnimalsByAbility(Predicate check) {
-        List<E> animalList = new ArrayList<>();
+    private  <Behavior> List<Behavior> getAnimalsByAbility(Predicate check) {
+        List<Behavior> animalList = new ArrayList<>();
         for (Owner owner : owners) {
             for (Animal pet : owner.getPets()) {
                 if (check.test(pet)) {
-                    animalList.add((E) pet);
+                    animalList.add((Behavior) pet);
                 }
             }
         }
