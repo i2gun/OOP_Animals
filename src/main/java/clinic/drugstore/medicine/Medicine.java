@@ -1,4 +1,4 @@
-package clinic.drugstore;
+package clinic.drugstore.medicine;
 
 public abstract class Medicine implements Comparable<Medicine> {
     private String title;
