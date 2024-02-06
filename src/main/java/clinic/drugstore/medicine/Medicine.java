@@ -1,14 +1,22 @@
 package clinic.drugstore.medicine;
 
 public abstract class Medicine implements Comparable<Medicine> {
-    private String title;
-    private Double weight;
-    private int power;
+    private final String title;
+    private final double weight;
+    private final int power;
 
     public Medicine(String title, Double weight, int power) {
         this.title = title;
         this.weight = weight;
         this.power = power;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public double getWeight() {
+        return weight;
     }
 
     @Override

@@ -1,39 +1,30 @@
 package clinic.drugstore;
 
 import clinic.drugstore.medicine.Medicine;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-public class PharmacyTwo implements Iterable<Medicine> {
-    private List<Medicine> medication;
-    private int index;
+public class PharmacyTwo extends Pharmacy implements Iterable<Medicine> {
 
-    public PharmacyTwo(Medicine... drugs) {
-        index = 0;
-        medication = new ArrayList<>();
-        for(Medicine drug : drugs){
-            addMedicine(drug);
-        }
-    }
-
-    public void addMedicine(Medicine drug) {
-        this.medication.add(drug);
-    }
+    private int index = 0;
 
     @Override
     public Iterator<Medicine> iterator() {
-        return new Iterator<Medicine>() { //Анонимный класс
+        return new Iterator<>() {
 
             @Override
             public boolean hasNext() {
-                return index < medication.size();
+                return index < getSize();
             }
 
             @Override
             public Medicine next() {
-                return medication.get(index++);
+                return getMedicine(index++);
             }
         };
+    }
+
+    @Override
+    public int compareTo(Pharmacy other) {
+        return Double.compare(this.getSumWeight(), other.getSumWeight());
     }
 }
