@@ -7,6 +7,10 @@ public class PharmacyTwo extends Pharmacy implements Iterable<Medicine> {
 
     private int index = 0;
 
+    public PharmacyTwo(String storeName) {
+        super(storeName);
+    }
+
     @Override
     public Iterator<Medicine> iterator() {
         return new Iterator<>() {
@@ -21,10 +25,5 @@ public class PharmacyTwo extends Pharmacy implements Iterable<Medicine> {
                 return getMedicine(index++);
             }
         };
-    }
-
-    @Override
-    public int compareTo(Pharmacy other) {
-        return Double.compare(this.getSumWeight(), other.getSumWeight());
     }
 }
