@@ -3,10 +3,7 @@ import clinic.drugstore.PharmacyOne;
 import clinic.drugstore.PharmacyTwo;
 import clinic.drugstore.medicine.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,6 +31,27 @@ public class Main {
         drugstores.add(drugstore1);
         drugstores.add(drugstore2);
 
+// --------------------------------------------------------------------------------------
+
+        for (PharmacyOne iterator = (PharmacyOne) drugstore0; iterator.hasNext(); ) {
+            Medicine it = iterator.next();
+            System.out.print(it + " | ");
+        }
+        System.out.println();
+
+        for (PharmacyOne iterator = (PharmacyOne) drugstore1; iterator.hasNext(); ) {
+            Medicine it = iterator.next();
+            System.out.print(it + " | ");
+        }
+        System.out.println();
+
+        for(Medicine item : (PharmacyTwo) drugstore2) {
+            System.out.print(item + " | ");
+        }
+        System.out.println();
+
+// --------------------------------------------------------------------------------------
+        System.out.println();
         System.out.println(drugstores);
         System.out.println();
 

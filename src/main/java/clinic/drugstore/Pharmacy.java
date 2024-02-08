@@ -1,7 +1,6 @@
 package clinic.drugstore;
 
 import clinic.drugstore.medicine.Medicine;
-import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
 import java.util.Collections;
